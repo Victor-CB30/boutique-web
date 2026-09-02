@@ -450,19 +450,20 @@ button { font-family: var(--font-body); }
 }
 
 .tarjeta-producto {
-    background: var(--blanco);
+    background: var(--superficie);
     border-radius: var(--radio-lg);
     overflow: hidden;
-    box-shadow: var(--sombra);
+    box-shadow: var(--sombra-sm);
     cursor: pointer;
-    transition: transform .3s, box-shadow .3s;
-    border: 1px solid var(--borde);
+    transition: transform var(--dur-lg) var(--ease-suave), box-shadow var(--dur-lg) var(--ease-suave);
+    border: 1px solid var(--borde-sutil);
     display: flex;
     flex-direction: column;
 }
-.tarjeta-producto:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--sombra-lg);
+.tarjeta-producto:hover,
+.tarjeta-producto:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-md);
 }
 
 .producto-imagen {
@@ -474,24 +475,26 @@ button { font-family: var(--font-body); }
     width: 100%;
     height: 300px;
     object-fit: cover;
-    transition: transform .4s ease;
+    transition: transform var(--dur-lg) var(--ease-suave);
 }
-.tarjeta-producto:hover .producto-imagen img {
-    transform: scale(1.06);
+.tarjeta-producto:hover .producto-imagen img,
+.tarjeta-producto:focus-visible .producto-imagen img {
+    transform: scale(1.035);
 }
 
 .etiqueta-nuevo {
     position: absolute;
     top: 14px;
     left: 14px;
-    background: var(--terracota);
-    color: var(--blanco);
-    padding: 5px 13px;
-    border-radius: var(--radio-xl);
-    font-size: .72rem;
+    background: var(--acento);
+    color: var(--texto-sobre-osc);
+    padding: 5px 12px;
+    border-radius: var(--radio-full);
+    font-size: .68rem;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
+    box-shadow: var(--sombra-xs);
 }
 
 .producto-info {
@@ -520,23 +523,61 @@ button { font-family: var(--font-body); }
     font-weight: 700;
     margin-bottom: 16px;
 }
-.boton-ver-mas {
-    background: transparent;
-    border: 2px solid var(--terracota);
-    color: var(--terracota);
-    padding: 10px 20px;
-    border-radius: var(--radio-xl);
-    font-weight: 600;
-    font-size: .9rem;
-    cursor: pointer;
-    transition: var(--trans);
-    width: 100%;
-    font-family: var(--font-body);
+.producto-card-actions {
+    display: flex;
+    gap: var(--space-2xs);
+    align-items: center;
     margin-top: auto;
+    padding-top: var(--space-sm);
 }
-.boton-ver-mas:hover {
-    background: var(--terracota);
-    color: var(--blanco);
+.boton-agregar-card {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 0;
+    border-radius: var(--radio-sm);
+    background: var(--acento);
+    color: var(--texto-sobre-osc);
+    padding: 11px 14px;
+    font-weight: 600;
+    font-size: .85rem;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: var(--trans-rapida);
+}
+.boton-agregar-card svg { flex-shrink: 0; }
+.boton-agregar-card:hover {
+    background: var(--primario-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--sombra-xs);
+}
+.boton-agregar-card:active { transform: translateY(0); }
+
+.boton-detalle-card {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--borde-sutil);
+    background: var(--superficie);
+    border-radius: var(--radio-sm);
+    color: var(--texto-principal);
+    cursor: pointer;
+    transition: var(--trans-rapida);
+}
+.boton-detalle-card:hover,
+.boton-detalle-card:focus-visible {
+    background: var(--primario-suave);
+    border-color: var(--primario);
+    color: var(--primario-hover);
+}
+@media (max-width: 600px) {
+    .producto-card-actions { gap: 6px; }
+    .boton-agregar-card { font-size: .8rem; padding: 10px; }
 }
 
 .mensaje-sin-resultados {
@@ -2567,9 +2608,16 @@ body { overflow-x: hidden; }
     .boton-buscar { width: 44px; height: 44px; }
     .titulo-seccion h2 { font-size: 2rem; line-height: 1.15; }
     .titulo-seccion p { font-size: .95rem; }
-    .grid-productos { grid-template-columns: 1fr; }
-    .tarjeta-producto { border-radius: 22px; }
+    .grid-productos { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .producto-imagen img { height: 190px; }
+    .producto-info { padding: 16px; }
+    .tarjeta-producto { border-radius: 18px; }
     .whatsapp-flotante { right: 18px; bottom: 18px; }
+}
+
+@media (max-width: 400px) {
+    .grid-productos { grid-template-columns: 1fr; }
+    .producto-imagen img { height: 260px; }
 }
 
 .admin-crud-grid { grid-template-columns: minmax(320px,.72fr) minmax(0,1.8fr); }
@@ -3151,7 +3199,7 @@ body { overflow-x: hidden; }
 }
 
 /* Mejoras julio 2026 */
-.producto-card-actions{display:flex;gap:8px;align-items:center;margin-top:14px}.boton-agregar-card{flex:1;border:0;border-radius:10px;background:#111827;color:#fff;padding:11px 14px;font-weight:700;cursor:pointer}.boton-agregar-card:hover{transform:translateY(-1px);background:#000}.boton-detalle-card{width:40px;height:40px;border:1px solid #e5e7eb;background:#fff;border-radius:10px;font-size:20px;cursor:pointer}.boton-detalle-card:hover{background:#f5f7fa}.admin-forgot-link{display:block;text-align:right;margin:-4px 0 14px;color:#2563eb;font-size:.9rem}.checkout-clean{padding-top:48px;padding-bottom:60px}.checkout-heading{margin-bottom:28px}.checkout-heading h1{font-size:clamp(2rem,4vw,3rem);margin:4px 0 8px}.checkout-heading .eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;font-weight:800;color:#2563eb}.checkout-form label{display:grid;gap:7px;font-weight:650;margin-bottom:16px}.checkout-form input,.checkout-form select,.checkout-form textarea{width:100%;border:1px solid #dbe1e8;border-radius:10px;padding:12px 13px;background:#fff;font:inherit}.checkout-security{text-align:center;color:#6b7280;font-size:.82rem;margin-top:12px}.resumen-card{height:max-content;position:sticky;top:100px}.resumen-item{display:flex;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px solid #edf0f3}.resumen-item div{display:grid;gap:5px}.resumen-item small{color:#6b7280}.resumen-total{display:flex;justify-content:space-between;align-items:center;padding-top:20px;font-size:1.2rem}.clean-admin .admin-sidebar{background:#0f5de8}.clean-admin .admin-nav a{padding:13px 16px}.clean-admin .admin-main{background:#f6f8fb}.clean-admin .admin-topbar{display:flex;justify-content:space-between;align-items:center}.admin-stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-bottom:22px}.admin-stats-grid article{background:#fff;border:1px solid #e9edf3;border-radius:16px;padding:20px;box-shadow:0 8px 25px rgba(16,24,40,.05)}.admin-stats-grid span{display:block;color:#667085;font-size:.9rem;margin-bottom:10px}.admin-stats-grid strong{font-size:1.65rem;color:#101828}@media(max-width:900px){.admin-stats-grid{grid-template-columns:repeat(2,1fr)}.resumen-card{position:static}}@media(max-width:600px){.admin-stats-grid{grid-template-columns:1fr 1fr}.checkout-clean{padding-top:28px}.producto-card-actions{gap:6px}.boton-agregar-card{font-size:.84rem;padding:10px}}
+.admin-forgot-link{display:block;text-align:right;margin:-4px 0 14px;color:#2563eb;font-size:.9rem}.checkout-clean{padding-top:48px;padding-bottom:60px}.checkout-heading{margin-bottom:28px}.checkout-heading h1{font-size:clamp(2rem,4vw,3rem);margin:4px 0 8px}.checkout-heading .eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;font-weight:800;color:#2563eb}.checkout-form label{display:grid;gap:7px;font-weight:650;margin-bottom:16px}.checkout-form input,.checkout-form select,.checkout-form textarea{width:100%;border:1px solid #dbe1e8;border-radius:10px;padding:12px 13px;background:#fff;font:inherit}.checkout-security{text-align:center;color:#6b7280;font-size:.82rem;margin-top:12px}.resumen-card{height:max-content;position:sticky;top:100px}.resumen-item{display:flex;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px solid #edf0f3}.resumen-item div{display:grid;gap:5px}.resumen-item small{color:#6b7280}.resumen-total{display:flex;justify-content:space-between;align-items:center;padding-top:20px;font-size:1.2rem}.clean-admin .admin-sidebar{background:#0f5de8}.clean-admin .admin-nav a{padding:13px 16px}.clean-admin .admin-main{background:#f6f8fb}.clean-admin .admin-topbar{display:flex;justify-content:space-between;align-items:center}.admin-stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-bottom:22px}.admin-stats-grid article{background:#fff;border:1px solid #e9edf3;border-radius:16px;padding:20px;box-shadow:0 8px 25px rgba(16,24,40,.05)}.admin-stats-grid span{display:block;color:#667085;font-size:.9rem;margin-bottom:10px}.admin-stats-grid strong{font-size:1.65rem;color:#101828}@media(max-width:900px){.admin-stats-grid{grid-template-columns:repeat(2,1fr)}.resumen-card{position:static}}@media(max-width:600px){.admin-stats-grid{grid-template-columns:1fr 1fr}.checkout-clean{padding-top:28px}}
 
 /* Ajustes panel administrador solicitados - julio 2026 */
 html{overflow-y:scroll}.admin-body{overflow-x:hidden}.clean-admin .admin-sidebar{background:linear-gradient(180deg,#075fe9 0%,#064dcc 100%)}.clean-admin .admin-nav a.activo{background:#fff;color:#0758d8;border-color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.12)}.clean-admin .admin-nav a:hover:not(.activo){background:rgba(255,255,255,.13)}
