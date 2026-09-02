@@ -49,6 +49,18 @@ $tituloPagina = $marca['nombre_marca'] . ' | ' . ($empresa['nombre_empresa'] ?? 
 <?php include __DIR__ . '/../includes/header.php'; ?>
 
 <main class="catalogo contenedor">
+    <nav class="breadcrumbs" aria-label="Ruta de navegación">
+        <a href="../index.php">Inicio</a>
+        <span class="separador-crumb" aria-hidden="true">/</span>
+        <a href="marcas.php">Marcas</a>
+        <span class="separador-crumb" aria-hidden="true">/</span>
+        <span aria-current="page"><?= htmlspecialchars($marca['nombre_marca']) ?></span>
+    </nav>
+    <div class="titulo-seccion">
+        <h2><?= htmlspecialchars($marca['nombre_marca']) ?></h2>
+        <p><?= htmlspecialchars($marca['descripcion_marca'] ?? 'Prendas disponibles de esta marca.') ?></p>
+    </div>
+
     <div class="grid-productos">
         <?php if (!empty($productos)): ?>
             <?php foreach ($productos as $prod): ?>

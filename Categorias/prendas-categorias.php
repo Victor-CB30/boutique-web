@@ -26,6 +26,13 @@ $tituloPagina = htmlspecialchars($categoria['nombre_categoria']) . ' | ' . htmls
 <?php include __DIR__ . '/../includes/header.php'; ?>
 
 <main class="catalogo contenedor">
+    <nav class="breadcrumbs" aria-label="Ruta de navegación">
+        <a href="../index.php">Inicio</a>
+        <span class="separador-crumb" aria-hidden="true">/</span>
+        <a href="categorias.php">Categorías</a>
+        <span class="separador-crumb" aria-hidden="true">/</span>
+        <span aria-current="page"><?= htmlspecialchars($categoria['nombre_categoria']) ?></span>
+    </nav>
     <div class="titulo-seccion">
         <h2><?= htmlspecialchars($categoria['nombre_categoria']) ?></h2>
         <p><?= htmlspecialchars($categoria['descripcion_categoria'] ?? 'Prendas disponibles en esta categoría.') ?></p>

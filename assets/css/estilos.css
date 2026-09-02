@@ -926,26 +926,55 @@ button { font-family: var(--font-body); }
 }
 
 .card-simple {
-    background: var(--blanco);
-    border: 1px solid var(--borde);
+    background: var(--superficie);
+    border: 1px solid var(--borde-sutil);
     border-radius: var(--radio-lg);
     padding: 28px;
-    box-shadow: var(--sombra);
+    box-shadow: var(--sombra-sm);
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    transition: transform .28s, box-shadow .28s;
+    gap: 10px;
+    transition: transform var(--dur-lg) var(--ease-suave), box-shadow var(--dur-lg) var(--ease-suave), border-color var(--dur-lg);
 }
-.card-simple:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--sombra-lg);
+.card-simple:hover,
+.card-simple:focus-within {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-md);
+    border-color: var(--primario);
+}
+.card-simple-monograma {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radio-sm);
+    background: var(--primario-suave);
+    color: var(--primario-hover);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+    transition: background var(--dur-md), color var(--dur-md);
+}
+.card-simple:hover .card-simple-monograma {
+    background: var(--acento);
+    color: var(--texto-sobre-osc);
+}
+.card-simple-eyebrow {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--texto-muted);
 }
 .card-simple h2 {
     font-family: var(--font-display);
     font-size: 1.4rem;
-    color: var(--negro);
+    color: var(--texto-principal);
 }
-.card-simple p { color: var(--gris-texto); font-size: .95rem; }
+.card-simple p { color: var(--texto-secundario); font-size: .95rem; flex: 1; }
+.card-simple .boton-principal { align-self: flex-start; margin-top: 6px; }
 
 /* ====================================================
    CONTACTO
@@ -1635,6 +1664,20 @@ button { font-family: var(--font-body); }
 }
 .boton-finalizar-carrito { background: var(--terracota); color: #fff; }
 .boton-seguir-carrito { background: var(--crema); color: var(--negro); border: 1px solid var(--borde); }
+
+.breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    font-size: .85rem;
+    color: var(--texto-muted);
+    margin-bottom: 20px;
+}
+.breadcrumbs a { color: var(--texto-secundario); transition: color var(--dur-xs); }
+.breadcrumbs a:hover, .breadcrumbs a:focus-visible { color: var(--primario-hover); }
+.breadcrumbs [aria-current="page"] { color: var(--texto-principal); font-weight: 600; }
+.breadcrumbs .separador-crumb { color: var(--texto-muted); }
 
 .filtros-rapidos {
     display: flex;

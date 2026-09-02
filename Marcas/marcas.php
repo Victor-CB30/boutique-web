@@ -18,6 +18,8 @@ $tituloPagina = 'Marcas | ' . htmlspecialchars($empresa['nombre_empresa'] ?? 'Bo
     <div class="grid-simple">
         <?php foreach ($marcas as $marca): ?>
         <article class="card-simple">
+            <span class="card-simple-monograma" aria-hidden="true"><?= htmlspecialchars(mb_substr($marca['nombre_marca'], 0, 1)) ?></span>
+            <span class="card-simple-eyebrow">Marca</span>
             <h2><?= htmlspecialchars($marca['nombre_marca']) ?></h2>
             <p><?= htmlspecialchars($marca['descripcion_marca'] ?? 'Prendas exclusivas de esta marca.') ?></p>
             <a class="boton-principal" href="prendas-marcas.php?id=<?= (int)$marca['id_marca'] ?>">

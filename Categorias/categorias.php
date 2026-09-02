@@ -18,6 +18,8 @@ $tituloPagina = 'Categorías | ' . htmlspecialchars($empresa['nombre_empresa'] ?
     <div class="grid-simple">
         <?php foreach ($categorias as $cat): ?>
         <article class="card-simple">
+            <span class="card-simple-monograma" aria-hidden="true"><?= htmlspecialchars(mb_substr($cat['nombre_categoria'], 0, 1)) ?></span>
+            <span class="card-simple-eyebrow">Categoría</span>
             <h2><?= htmlspecialchars($cat['nombre_categoria']) ?></h2>
             <p><?= htmlspecialchars($cat['descripcion_categoria'] ?? 'Prendas exclusivas en esta categoría.') ?></p>
             <a class="boton-principal" href="prendas-categorias.php?id=<?= (int)$cat['id_categoria'] ?>">
