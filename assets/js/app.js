@@ -65,7 +65,9 @@ function mostrarToast(mensaje, tipo = 'exito') {
     toast.innerHTML = `
         <span class="toast-icono">${ICONOS_TOAST[tipo]}</span>
         <span class="toast-texto">${mensaje}</span>
-        <button type="button" class="toast-cerrar" aria-label="Cerrar notificación">&times;</button>
+        <button type="button" class="toast-cerrar" aria-label="Cerrar notificación">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
+        </button>
         <span class="toast-barra" style="animation-duration:${duracion}ms"></span>`;
     contenedor.appendChild(toast);
 
@@ -295,7 +297,16 @@ function agregarAlCarrito(idProducto, nombreProducto, precioProducto) {
     }
 
     guardarCarrito(carrito);
+    animarContadorCarrito();
     mostrarToast(`"${nombreProducto}" añadido al carrito ✓`);
+}
+
+function animarContadorCarrito() {
+    const contador = document.getElementById('contadorCarritoMenu');
+    if (!contador) return;
+    contador.classList.remove('pulso');
+    void contador.offsetWidth;
+    contador.classList.add('pulso');
 }
 
 function cambiarCantidadCarrito(indice, cambio) {
@@ -358,7 +369,9 @@ function actualizarCarritoMenu() {
                     <button type="button" onclick="cambiarCantidadCarrito(${i}, -1)" aria-label="Restar cantidad">−</button>
                     <span>${cantidad}</span>
                     <button type="button" onclick="cambiarCantidadCarrito(${i}, 1)" aria-label="Agregar cantidad">+</button>
-                    <button type="button" class="btn-eliminar-carrito" onclick="eliminarItemCarrito(${i})" aria-label="Eliminar producto">×</button>
+                    <button type="button" class="btn-eliminar-carrito" onclick="eliminarItemCarrito(${i})" aria-label="Eliminar producto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+                    </button>
                 </div>
             </div>`;
     }).join('');

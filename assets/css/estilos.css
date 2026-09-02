@@ -1299,16 +1299,19 @@ button { font-family: var(--font-body); }
 .toast-notif .toast-texto { flex: 1; line-height: 1.5; padding-top: 2px; }
 .toast-notif .toast-cerrar {
     flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: none;
     border: none;
-    color: var(--gris-suave);
+    color: var(--texto-muted);
     cursor: pointer;
-    font-size: 1.1rem;
     line-height: 1;
     padding: 2px;
-    transition: color .2s;
+    transition: color var(--dur-xs) var(--ease-estandar);
 }
-.toast-notif .toast-cerrar:hover { color: var(--negro); }
+.toast-notif .toast-cerrar:hover,
+.toast-notif .toast-cerrar:focus-visible { color: var(--texto-principal); }
 .toast-notif .toast-barra {
     position: absolute;
     left: 0; bottom: 0;
@@ -1508,29 +1511,36 @@ button { font-family: var(--font-body); }
 .contador-carrito-menu {
     min-width: 20px;
     height: 20px;
-    border-radius: 999px;
-    background: var(--terracota);
+    border-radius: var(--radio-full);
+    background: var(--primario);
     color: #fff;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-size: .75rem;
     padding: 0 6px;
+    transition: transform var(--dur-sm) var(--ease-suave);
+}
+.contador-carrito-menu.pulso { animation: contadorPulso var(--dur-lg) var(--ease-suave); }
+@keyframes contadorPulso {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 .dropdown-carrito {
     position: absolute;
     right: 0;
     top: calc(100% + 14px);
     width: min(360px, 92vw);
-    background: #fff;
-    border: 1px solid var(--borde);
-    border-radius: 18px;
-    box-shadow: 0 18px 50px rgba(0,0,0,.14);
+    background: var(--superficie);
+    border: 1px solid var(--borde-sutil);
+    border-radius: var(--radio-md);
+    box-shadow: var(--sombra-md);
     padding: 16px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(8px);
-    transition: all .2s ease;
+    transition: opacity var(--dur-sm) var(--ease-estandar), transform var(--dur-sm) var(--ease-estandar), visibility var(--dur-sm);
     z-index: 1200;
 }
 .dropdown-carrito.activo,
@@ -1587,18 +1597,29 @@ button { font-family: var(--font-body); }
 .item-carrito-controles button {
     width: 26px;
     height: 26px;
-    border-radius: 999px;
-    border: 1px solid var(--borde);
-    background: var(--crema);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radio-full);
+    border: 1px solid var(--borde-sutil);
+    background: var(--bg-secundario);
     cursor: pointer;
     font-weight: 700;
+    transition: var(--trans-rapida);
 }
+.item-carrito-controles button:hover { border-color: var(--primario); color: var(--primario-hover); }
 .item-carrito-controles span { min-width: 18px; text-align: center; font-weight: 700; }
 .item-carrito-controles .btn-eliminar-carrito {
-    background: #fff0f0;
-    color: #b42318;
-    border-color: #ffd0d0;
+    background: var(--error-suave);
+    color: var(--error);
+    border-color: var(--error-suave);
 }
+.item-carrito-controles .btn-eliminar-carrito:hover {
+    border-color: var(--error);
+    color: var(--error);
+    background: var(--error-suave);
+}
+.item-carrito-controles .btn-eliminar-carrito svg { width: 14px; height: 14px; }
 .dropdown-carrito-acciones {
     display: grid;
     gap: 8px;
