@@ -2593,9 +2593,9 @@ button { font-family: var(--font-body); }
 .admin-product-cell img { width: 48px; height: 48px; object-fit: cover; border-radius: 13px; background: var(--crema); border: 1px solid var(--borde); flex-shrink: 0; }
 .admin-stock { display: inline-flex; min-width: 36px; justify-content: center; padding: 5px 10px; border-radius: 999px; background: #eff9f0; color: #32633a; font-weight: 800; font-size: .85rem; }
 .admin-stock.low { background: #fff4f2; color: #9d2f24; }
-.admin-badge { display: inline-flex; border-radius: 999px; padding: 6px 10px; font-weight: 800; font-size: .78rem; }
-.admin-badge.ok { background: #eff9f0; color: #32633a; }
-.admin-badge.muted { background: var(--crema-oscura); color: var(--gris-texto); }
+.admin-badge { display: inline-flex; border-radius: var(--radio-full); padding: 6px 10px; font-weight: 800; font-size: .78rem; }
+.admin-badge.ok { background: var(--exito-suave); color: #2a6b46; }
+.admin-badge.muted { background: var(--bg-secundario); color: var(--texto-secundario); }
 
 .admin-actions-inline { display: flex; gap: 8px; align-items: center; justify-content: flex-end; min-width: 230px; flex-wrap: nowrap; }
 .admin-actions-inline form { margin: 0; }
@@ -3516,8 +3516,8 @@ html{overflow-y:scroll}.admin-body{overflow-x:hidden}
 .admin-actions-dropdown a:hover,
 .admin-actions-dropdown button:hover { background: #f8eee8; }
 .admin-actions-dropdown form { margin: 0; }
-.admin-actions-dropdown .danger-action { color: #b42318; }
-.admin-actions-dropdown .danger-action:hover { background: #fff0ee; }
+.admin-actions-dropdown .danger-action { color: var(--error); }
+.admin-actions-dropdown .danger-action:hover { background: var(--error-suave); }
 .admin-product-row { overflow: visible; }
 
 @media (max-width: 1180px) {

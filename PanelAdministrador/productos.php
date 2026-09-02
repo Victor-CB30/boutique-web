@@ -351,7 +351,7 @@ function badgeEstadoProducto(int $estado): string {
                         </label>
                         <label class="admin-upload-tray" for="imagen_local">
                             <input type="file" id="imagen_local" name="imagen_local" accept="image/*">
-                            <span class="upload-icon">⇧</span>
+                            <span class="upload-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg></span>
                             <strong>Subir imagen desde tu PC</strong>
                             <small>Arrastra una foto aquí o haz clic para seleccionarla. Formatos: JPG, PNG, WEBP o GIF.</small>
                         </label>
@@ -406,19 +406,19 @@ function badgeEstadoProducto(int $estado): string {
                             <div class="admin-product-stock" data-label="Stock"><span class="admin-stock <?= (int)($producto['stock_producto'] ?? 0) <= 3 ? 'low' : '' ?>"><?= (int)($producto['stock_producto'] ?? 0) ?></span></div>
                             <div class="admin-product-actions" data-label="Acciones">
                                 <details class="admin-actions-menu">
-                                    <summary aria-label="Abrir acciones del producto" title="Acciones">•••</summary>
+                                    <summary aria-label="Abrir acciones del producto" title="Acciones"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></summary>
                                     <div class="admin-actions-dropdown">
                                         <a href="../producto_detalle.php?id=<?= (int)$producto['id_producto'] ?>" target="_blank">
-                                            <span aria-hidden="true">👁</span> Ver producto
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg> Ver producto
                                         </a>
                                         <a href="productos.php?editar=<?= (int)$producto['id_producto'] ?>&pagina=<?= $pagina ?><?= $busqueda !== '' ? '&buscar=' . urlencode($busqueda) : '' ?>#form-producto">
-                                            <span aria-hidden="true">✎</span> Editar
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg> Editar
                                         </a>
                                         <form method="POST" onsubmit="return confirm('¿Deseas eliminar definitivamente este producto?');">
                                             <input type="hidden" name="accion" value="eliminar">
                                             <input type="hidden" name="id_producto" value="<?= (int)$producto['id_producto'] ?>">
                                             <input type="hidden" name="return_to" value="<?= htmlspecialchars($retornoListado) ?>">
-                                            <button type="submit" class="danger-action"><span aria-hidden="true">🗑</span> Eliminar</button>
+                                            <button type="submit" class="danger-action"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg> Eliminar</button>
                                         </form>
                                     </div>
                                 </details>
