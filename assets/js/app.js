@@ -7,6 +7,19 @@ window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 50);
 }, { passive: true });
 
+// ── Botón volver arriba ──
+window.addEventListener('scroll', () => {
+    const boton = document.getElementById('botonArriba');
+    if (!boton) return;
+    boton.classList.toggle('visible', window.scrollY > 500);
+}, { passive: true });
+
+document.addEventListener('click', e => {
+    if (e.target.closest('#botonArriba')) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+});
+
 // ── Menú móvil ──
 const botonMenu     = document.getElementById('botonMenu');
 const menuPrincipal = document.getElementById('menuPrincipal');
@@ -87,7 +100,7 @@ function mostrarToast(mensaje, tipo = 'exito') {
 
 // ── Animación de aparición al hacer scroll ──
 function inicializarRevelado() {
-    const selectores = '.tarjeta-producto, .titulo-seccion, .pago-card, .contacto-card, .detalle-producto, .footer-grid > div';
+    const selectores = '.tarjeta-producto, .titulo-seccion, .pago-card, .contacto-card, .detalle-producto, .footer-grid > div, .card-simple';
     const elementos = document.querySelectorAll(selectores);
     if (!elementos.length) return;
 
