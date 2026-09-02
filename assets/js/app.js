@@ -129,9 +129,19 @@ function abrirDetalleProducto(idProducto) {
     if (!modal || !contenido) return;
 
     contenido.innerHTML = `
-        <div class="cargando-producto">
-            <div class="spinner"></div>
-            Cargando producto…
+        <div class="skeleton-producto" aria-hidden="true">
+            <div class="skeleton-bloque skeleton-imagen"></div>
+            <div>
+                <div class="skeleton-bloque skeleton-linea" style="width:35%;height:20px;"></div>
+                <div class="skeleton-bloque skeleton-linea titulo"></div>
+                <div class="skeleton-bloque skeleton-linea precio"></div>
+                <div class="skeleton-bloque skeleton-linea"></div>
+                <div class="skeleton-bloque skeleton-linea corta"></div>
+                <div class="skeleton-botones">
+                    <div class="skeleton-bloque skeleton-boton"></div>
+                    <div class="skeleton-bloque skeleton-boton"></div>
+                </div>
+            </div>
         </div>`;
     modal.classList.add('activo');
     document.body.style.overflow = 'hidden';
@@ -402,5 +412,9 @@ document.addEventListener('click', e => {
     if (modal && e.target === modal) cerrarDetalleProducto();
 });
 document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') cerrarDetalleProducto();
+    const modal = document.getElementById('modalProducto');
+    if (!modal || !modal.classList.contains('activo')) return;
+    if (e.key === 'Escape') { cerrarDetalleProducto(); return; }
+    if (e.key === 'ArrowLeft')  moverCarrusel(-1);
+    if (e.key === 'ArrowRight') moverCarrusel(1);
 });

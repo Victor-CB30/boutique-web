@@ -110,7 +110,9 @@ $idMarcaActual     = isset($_GET['id_marca']) ? (int)$_GET['id_marca'] : (($dirA
 <!-- ══ Modal detalle ══ -->
 <div class="modal-producto" id="modalProducto" role="dialog" aria-modal="true" aria-label="Detalle del producto">
     <div class="modal-contenido">
-        <button class="cerrar-modal" type="button" onclick="cerrarDetalleProducto()" aria-label="Cerrar">×</button>
+        <button class="cerrar-modal" type="button" onclick="cerrarDetalleProducto()" aria-label="Cerrar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
+        </button>
         <div id="contenidoModalProducto"></div>
     </div>
 </div>

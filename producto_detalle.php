@@ -56,7 +56,9 @@ if (empty($imagenes)) {
     <!-- ═══ CARRUSEL ═══ -->
     <div class="carrusel-producto">
         <button class="control-carrusel" type="button"
-                onclick="moverCarrusel(-1)" aria-label="Imagen anterior">&#8249;</button>
+                onclick="moverCarrusel(-1)" aria-label="Imagen anterior">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
 
         <div class="imagenes-carrusel" id="imagenesCarrusel" role="list">
             <?php foreach ($imagenes as $img):
@@ -74,7 +76,9 @@ if (empty($imagenes)) {
         </div>
 
         <button class="control-carrusel" type="button"
-                onclick="moverCarrusel(1)" aria-label="Imagen siguiente">&#8250;</button>
+                onclick="moverCarrusel(1)" aria-label="Imagen siguiente">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
     </div>
 
     <!-- ═══ INFORMACIÓN ═══ -->
@@ -92,11 +96,12 @@ if (empty($imagenes)) {
 
         <h2><?= htmlspecialchars($producto['nombre_producto']) ?></h2>
 
+        <p class="detalle-precio"><?= formatearPrecio($producto['precio_producto']) ?></p>
+
         <?php if (!empty($producto['descripcion_producto'])): ?>
         <p class="detalle-descripcion"><?= htmlspecialchars($producto['descripcion_producto']) ?></p>
         <?php endif; ?>
 
-        <p class="detalle-precio"><?= formatearPrecio($producto['precio_producto']) ?></p>
         <span class="stock-producto-card"><?= $stockProducto > 0 ? 'Stock disponible: ' . (int)$stockProducto . ' unidad(es)' : 'Sin stock disponible' ?></span>
 
         <hr class="separador">
@@ -146,8 +151,8 @@ if (empty($imagenes)) {
         
         <!-- Acciones -->
         <div class="acciones-producto">
-            <!-- Botón añadir al carrito -->
-            <button class="boton-secundario ancho-completo" type="button"
+            <!-- Botón añadir al carrito (acción principal) -->
+            <button class="boton-principal ancho-completo" type="button"
                     onclick="agregarAlCarrito(
                         <?= (int)$producto['id_producto'] ?>,
                         '<?= htmlspecialchars($producto['nombre_producto'], ENT_QUOTES) ?>',
@@ -159,8 +164,8 @@ if (empty($imagenes)) {
                 Añadir al carrito
             </button>
 
-            <!-- Botón COMPRAR → pagos.php -->
-            <button class="boton-principal ancho-completo" type="button"
+            <!-- Botón COMPRAR → pagos.php (acción secundaria: compra directa) -->
+            <button class="boton-secundario ancho-completo" type="button"
                     onclick="comprarProducto(
                         <?= (int)$producto['id_producto'] ?>,
                         '<?= htmlspecialchars($producto['nombre_producto'], ENT_QUOTES) ?>',

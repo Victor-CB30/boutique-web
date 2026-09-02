@@ -598,16 +598,16 @@ button { font-family: var(--font-body); }
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(15,10,8,.65);
+    background: rgba(15,10,8,.68);
     z-index: 2000;
     padding: 20px;
     overflow-y: auto;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px);
 }
 .modal-producto.activo {
     display: grid;
     place-items: center;
-    animation: fadeIn .22s ease;
+    animation: fadeIn var(--dur-md) var(--ease-estandar);
 }
 
 @keyframes fadeIn {
@@ -617,43 +617,44 @@ button { font-family: var(--font-body); }
 
 .modal-contenido {
     width: min(1060px, 100%);
-    background: var(--blanco);
+    background: var(--superficie);
     border-radius: var(--radio-lg);
     position: relative;
     padding: 40px;
-    box-shadow: 0 40px 100px rgba(0,0,0,.28);
-    animation: slideUp .28s cubic-bezier(.4,0,.2,1);
+    box-shadow: var(--sombra-xl);
+    animation: modalEntrada var(--dur-lg) var(--ease-suave);
     margin: auto;
 }
 
-@keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to   { transform: translateY(0);    opacity: 1; }
+@keyframes modalEntrada {
+    from { transform: translateY(16px) scale(.97); opacity: 0; }
+    to   { transform: translateY(0) scale(1);      opacity: 1; }
 }
 
 .cerrar-modal {
     position: absolute;
     top: 18px;
     right: 20px;
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    border: 1.5px solid var(--borde);
+    border: 1.5px solid var(--borde-sutil);
     cursor: pointer;
-    background: var(--crema);
-    color: var(--gris-texto);
-    font-size: 1.3rem;
+    background: var(--superficie);
+    color: var(--texto-secundario);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: var(--trans);
+    transition: var(--trans-rapida);
     z-index: 10;
     line-height: 1;
+    box-shadow: var(--sombra-xs);
 }
-.cerrar-modal:hover {
-    background: var(--negro);
-    color: var(--blanco);
-    border-color: var(--negro);
+.cerrar-modal:hover,
+.cerrar-modal:focus-visible {
+    background: var(--acento);
+    color: var(--texto-sobre-osc);
+    border-color: var(--acento);
 }
 
 /* ── Detalle del producto (dentro del modal) ── */
@@ -693,21 +694,25 @@ button { font-family: var(--font-body); }
     transform: translateY(-50%);
     z-index: 5;
     border: none;
-    background: rgba(255,255,255,.85);
-    color: var(--negro);
-    font-size: 1.8rem;
-    width: 48px;
-    height: 52px;
+    background: rgba(255,255,255,.82);
+    color: var(--texto-principal);
+    width: 42px;
+    height: 42px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: var(--radio-sm);
-    transition: background .2s;
+    border-radius: var(--radio-full);
+    transition: var(--trans-rapida);
     line-height: 1;
     backdrop-filter: blur(4px);
+    box-shadow: var(--sombra-sm);
 }
-.control-carrusel:hover { background: var(--blanco); }
+.control-carrusel:hover,
+.control-carrusel:focus-visible {
+    background: var(--superficie);
+    transform: translateY(-50%) scale(1.06);
+}
 .control-carrusel:first-child { left: 12px; }
 .control-carrusel:last-child { right: 12px; }
 
@@ -1344,6 +1349,34 @@ button { font-family: var(--font-body); }
     margin: 20px auto;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* Skeleton de carga del modal de producto */
+.skeleton-producto {
+    display: grid;
+    grid-template-columns: 55% 1fr;
+    gap: 44px;
+    align-items: start;
+}
+.skeleton-bloque {
+    background: linear-gradient(90deg, var(--bg-secundario) 25%, var(--borde-sutil) 37%, var(--bg-secundario) 63%);
+    background-size: 400% 100%;
+    animation: skeletonPulso 1.4s ease infinite;
+    border-radius: var(--radio-md);
+}
+@keyframes skeletonPulso {
+    0%   { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
+}
+.skeleton-imagen { aspect-ratio: 4/5; border-radius: var(--radio-lg); }
+.skeleton-linea { height: 14px; margin-bottom: 12px; }
+.skeleton-linea.titulo { height: 26px; width: 80%; margin-bottom: 18px; }
+.skeleton-linea.precio { height: 22px; width: 40%; margin-bottom: 22px; }
+.skeleton-linea.corta { width: 55%; }
+.skeleton-botones { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+.skeleton-boton { height: 48px; border-radius: var(--radio-xl); }
+@media (max-width: 768px) {
+    .skeleton-producto { grid-template-columns: 1fr; gap: 24px; }
+}
 
 /* ====================================================
    ETIQUETA CATEGORIA / FILTRO
