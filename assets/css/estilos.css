@@ -1039,7 +1039,11 @@ button { font-family: var(--font-body); }
 }
 .campo textarea { resize: vertical; min-height: 130px; }
 .boton-enviar {
-    background: var(--terracota);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    background: var(--primario);
     color: var(--blanco);
     border: none;
     padding: 14px 28px;
@@ -1048,30 +1052,40 @@ button { font-family: var(--font-body); }
     font-weight: 700;
     font-size: 1rem;
     font-family: var(--font-body);
-    transition: var(--trans);
+    transition: var(--trans-rapida);
     width: 100%;
     margin-top: 4px;
 }
-.boton-enviar:hover { background: var(--terra-osc); transform: translateY(-1px); }
+.boton-enviar:hover { background: var(--primario-hover); transform: translateY(-1px); box-shadow: var(--sombra-xs); }
 
 /* Alertas */
 .alerta {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
     padding: 14px 18px;
     border-radius: var(--radio-md);
     margin-bottom: 18px;
     font-size: .95rem;
 }
-.alerta-error { background: #fff0f0; color: #c0392b; border: 1px solid #f5c6cb; }
-.alerta-exito { background: #eafaf1; color: #1e8449; border: 1px solid #b7ebc8; }
+.alerta-icono { flex-shrink: 0; margin-top: 2px; }
+.alerta-error { background: var(--error-suave); color: var(--error); border: 1px solid var(--error-suave); }
+.alerta-exito { background: var(--exito-suave); color: var(--exito); border: 1px solid var(--exito-suave); }
+.alerta-lista { padding-left: 18px; margin: 0; }
+
+.campo-honeypot { display: none; }
+.info-contacto-mapa { border-radius: var(--radio-sm); overflow: hidden; margin-top: 8px; }
+.info-contacto-mapa iframe { border: 0; display: block; }
 
 .info-contacto p {
     font-size: .95rem;
-    color: var(--gris-texto);
+    color: var(--texto-secundario);
     margin: 6px 0;
     line-height: 1.6;
 }
-.info-contacto a { color: var(--terracota); transition: color .2s; }
-.info-contacto a:hover { color: var(--terra-osc); }
+.info-contacto-linea { display: flex; align-items: center; gap: 8px; }
+.info-contacto a { color: var(--primario); transition: color var(--dur-xs); }
+.info-contacto a:hover { color: var(--primario-hover); }
 
 /* ====================================================
    PÁGINA DE PAGO
