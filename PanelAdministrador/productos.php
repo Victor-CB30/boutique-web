@@ -251,7 +251,8 @@ function badgeEstadoProducto(int $estado): string {
 </head>
 <body class="admin-body">
 <div class="admin-layout clean-admin products-admin-layout">
-    <aside class="admin-sidebar admin-sidebar-full">
+    <div class="admin-drawer-overlay" id="adminDrawerOverlay"></div>
+    <aside class="admin-sidebar admin-sidebar-full" id="adminSidebar">
         <div class="admin-sidebar-brand">
             <span class="admin-logo-mini">BG</span>
             <div><strong><?= htmlspecialchars($empresa['nombre_empresa'] ?? 'Boutique') ?></strong><small>Administración</small></div>
@@ -286,6 +287,7 @@ function badgeEstadoProducto(int $estado): string {
 
     <main class="admin-main products-admin-main">
         <header class="admin-topbar admin-topbar-actions">
+            <button class="admin-drawer-toggle" id="adminDrawerToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="adminSidebar"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
             <div>
                 <span class="admin-kicker">Catálogo</span>
                 <h1>Gestión de productos</h1>
@@ -442,6 +444,7 @@ function badgeEstadoProducto(int $estado): string {
         </section>
     </main>
 </div>
+<script src="../assets/js/app.js"></script>
 <script>
 const inputImagen = document.getElementById('imagen_local');
 const preview = document.querySelector('#adminImagePreview img');

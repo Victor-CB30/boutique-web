@@ -419,6 +419,34 @@ function mostrarMetodoPago(idMetodo) {
     if (boton) boton.classList.add('activo');
 }
 
+// ── Drawer del sidebar admin (tablet/móvil) ──
+function inicializarDrawerAdmin() {
+    const boton   = document.getElementById('adminDrawerToggle');
+    const sidebar = document.getElementById('adminSidebar');
+    const overlay = document.getElementById('adminDrawerOverlay');
+    if (!boton || !sidebar || !overlay) return;
+
+    const cerrarDrawer = () => {
+        sidebar.classList.remove('abierto');
+        overlay.classList.remove('activo');
+        boton.setAttribute('aria-expanded', 'false');
+    };
+    const abrirDrawer = () => {
+        sidebar.classList.add('abierto');
+        overlay.classList.add('activo');
+        boton.setAttribute('aria-expanded', 'true');
+    };
+
+    boton.addEventListener('click', () => {
+        sidebar.classList.contains('abierto') ? cerrarDrawer() : abrirDrawer();
+    });
+    overlay.addEventListener('click', cerrarDrawer);
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') cerrarDrawer();
+    });
+}
+document.addEventListener('DOMContentLoaded', inicializarDrawerAdmin);
+
 // ── Cerrar modal con clic afuera o ESC ──
 document.addEventListener('click', e => {
     const modal = document.getElementById('modalProducto');

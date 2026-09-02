@@ -30,7 +30,8 @@ $tipo=$_SESSION['admin_tipo_mensaje']??'ok';unset($_SESSION['admin_mensaje'],$_S
 </head>
 <body class="admin-body admin-catalog-page">
     <div class="admin-layout clean-admin">
-        <aside class="admin-sidebar">
+        <div class="admin-drawer-overlay" id="adminDrawerOverlay"></div>
+        <aside class="admin-sidebar" id="adminSidebar">
             <div class="admin-sidebar-brand">
                 <span class="admin-logo-mini">BG</span>
                 <div>
@@ -53,7 +54,7 @@ $tipo=$_SESSION['admin_tipo_mensaje']??'ok';unset($_SESSION['admin_mensaje'],$_S
                 </div>
             </aside>
                 <main class="admin-main">
-                    <header class="admin-topbar"><div>
+                    <header class="admin-topbar"><button class="admin-drawer-toggle" id="adminDrawerToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="adminSidebar"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button><div>
                         <span class="admin-kicker">Catálogo</span>
                         <h1>Categorías</h1>
                         <p>Crea y organiza las categorías disponibles en la tienda.</p>
@@ -125,6 +126,7 @@ $tipo=$_SESSION['admin_tipo_mensaje']??'ok';unset($_SESSION['admin_mensaje'],$_S
                             </section>
                         </main>
                     </div>
+                    <script src="../assets/js/app.js"></script>
                 </body>
             </html>
 <!--  -->

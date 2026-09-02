@@ -205,7 +205,8 @@ unset($_SESSION['admin_mensaje'], $_SESSION['admin_tipo_mensaje']);
 </head>
 <body class="admin-body">
 <div class="admin-layout clean-admin">
-    <aside class="admin-sidebar">
+    <div class="admin-drawer-overlay" id="adminDrawerOverlay"></div>
+    <aside class="admin-sidebar" id="adminSidebar">
         <div class="admin-sidebar-brand">
             <span class="admin-logo-mini">BG</span>
             <div>
@@ -232,6 +233,7 @@ unset($_SESSION['admin_mensaje'], $_SESSION['admin_tipo_mensaje']);
 
     <main class="admin-main">
         <header class="admin-topbar">
+            <button class="admin-drawer-toggle" id="adminDrawerToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="adminSidebar"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
             <div>
                 <span class="admin-kicker">Ventas</span>
                 <h1>Pedidos</h1>
@@ -488,6 +490,7 @@ unset($_SESSION['admin_mensaje'], $_SESSION['admin_tipo_mensaje']);
     </main>
 </div>
 
+<script src="../assets/js/app.js"></script>
 <script>
     const cliente = document.getElementById('clientePedido');
     const direccion = document.getElementById('direccionManual');
